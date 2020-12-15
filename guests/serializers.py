@@ -12,7 +12,7 @@ class SlotSerializer(serializers.ModelSerializer):
         depth = 1
 
 class GuestSerializer(serializers.ModelSerializer):
-    slots = SlotSerializer(many=True)
+    slots = SlotSerializer(many=True, required=False)
     class Meta:
         model = Guest
         fields = ['id', 'first_name', 'last_name', 'phone_number', 'guest_notes', 'root_user', 'slots']
