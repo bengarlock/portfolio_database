@@ -36,8 +36,8 @@ ALLOWED_HOSTS = [
     'yoda',
     'bengarlock.com',
     'www.bengarlock.com',
-    'http://localhost:3000'
-    'database.bengarlock.com'
+    'http://localhost:3000',
+    'database.bengarlock.com',
 ]
 
 
@@ -83,10 +83,11 @@ CORS_ALLOWED_ORIGINS = [
     'http://www.bengarlock.com',
     'http://localhost:8000',
     'http://localhost:3000',
-    'http://bengarlock.com:6320,'
-    'https://database.bengarlock.com'
-    'https://bengarlock.com'
-    'https://www.bengarlock.com'
+    'http://bengarlock.com:6320,',
+    'https://database.bengarlock.com',
+    'https://bengarlock.com',
+    'https://www.bengarlock.com',
+    'http://localhost:63343',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
