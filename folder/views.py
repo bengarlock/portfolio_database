@@ -12,7 +12,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
 
 class FolderSerializer(serializers.ModelSerializer):
-    tasks = TaskSerializer(many=True)
+    tasks = TaskSerializer(many=True, required=False)
     class Meta:
         model = Folder
         fields = ['id', 'name', 'tasks']
