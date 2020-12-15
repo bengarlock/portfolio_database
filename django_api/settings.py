@@ -76,21 +76,9 @@ MIDDLEWARE = [
 
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost',
-    'http://127.0.0.1',
-    'http://bengarlock.com',
-    'http://www.bengarlock.com',
-    'http://localhost:8000',
-    'http://localhost:3000',
-    'http://bengarlock.com:6320,',
-    'https://database.bengarlock.com',
-    'https://bengarlock.com',
-    'https://www.bengarlock.com',
-    'http://localhost:63343',
-]
+CORS_ALLOWED_ORIGINS = []
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 ROOT_URLCONF = 'django_api.urls'
