@@ -13,14 +13,9 @@ class TaskSerializer(serializers.ModelSerializer):
 
 class FolderSerializer(serializers.ModelSerializer):
     tasks = TaskSerializer(many=True, required=False)
-
     class Meta:
         model = Folder
         fields = ['id', 'name', 'tasks']
-
-    def create(self, validated_data):
-        Folder.objects.create(**validated_data)
-        return Folder(**validated_data)
 
 
 # Create your views here.

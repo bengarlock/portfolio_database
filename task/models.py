@@ -9,5 +9,5 @@ class Task(models.Model):
     name = models.TextField(max_length=50, default="Task Name")
     notes = models.TextField(max_length=500, default="")
     status = models.TextField(max_length=50, default="pending")
-    folder_id = models.ForeignKey(Folder, related_name="tasks", on_delete=models.CASCADE)
+    folder_id = models.ForeignKey(Folder, related_name="tasks", on_delete=models.CASCADE, default='')
 
