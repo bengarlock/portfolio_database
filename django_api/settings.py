@@ -30,14 +30,11 @@ SECRET_KEY = return_secret_key()
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.86.51',
     '127.0.0.1',
     'localhost',
-    'yoda',
     'bengarlock.com',
     'www.bengarlock.com',
     'http://localhost:3000',
-    'database.bengarlock.com',
 ]
 
 
@@ -61,6 +58,7 @@ INSTALLED_APPS = [
     'faker',
     'folder',
     'task',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -78,9 +76,16 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'https://www.bengarlock.com:6320',
+    'https://www.bengarlock.com:6321',
+    'https://www.bengarlock.com:6322',
+    'https://www.bengarlock.com:6323',
+    'https://www.bengarlock.com:6324',
+    'https://www.bengarlock.com:6325',
+    'https://www.bengarlock.com:6326',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
 
 
 ROOT_URLCONF = 'django_api.urls'

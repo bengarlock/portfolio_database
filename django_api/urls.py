@@ -22,7 +22,6 @@ router.register('tasks', TaskView)
 
 urlpatterns = [
     url('admin/', admin.site.urls),
-    url('', )
 ]
 
 urlpatterns += router.urls
