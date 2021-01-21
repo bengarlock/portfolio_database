@@ -10,4 +10,5 @@ class Jobapp(models.Model):
     technologies = ArrayField(models.CharField(max_length=255), default=list, blank=True)
     date_applied = models.DateField(default=date.today())
     status = models.TextField(default="Applied", max_length=50, blank=True)
+    contact = models.TextField(default="Hiring Manager", blank=True)
     
