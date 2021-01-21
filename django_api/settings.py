@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'folder',
     'task',
     'home',
+    'job_apps',
 ]
 
 MIDDLEWARE = [
