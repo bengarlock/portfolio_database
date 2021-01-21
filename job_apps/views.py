@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Jobapp
+from .serializers import JobappSerializer
 
-# Create your views here.
+
+class JobappView(viewsets.ModelViewSet):
+    queryset = Jobapp.objects.all()
+    serializer_class = JobappSerializer
