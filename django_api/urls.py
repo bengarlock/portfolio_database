@@ -5,6 +5,7 @@ from slots.views import SlotView
 from tables.views import TableView
 from restaurants.views import RestaurantView
 from folder.views import FolderView
+from templates.views import TemplateView
 from job_apps.views import JobappView
 from task.views import TaskView
 from django.contrib import admin
@@ -20,6 +21,7 @@ router.register(r'restaurants', RestaurantView)
 router.register('folders', FolderView)
 router.register('tasks', TaskView)
 router.register('jobapps', JobappView)
+router.register('templates', TemplateView)
 
 
 
