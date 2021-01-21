@@ -9,5 +9,5 @@ class Jobapp(models.Model):
     url = models.TextField(default='', blank=True)
     technologies = ArrayField(models.CharField(max_length=255), default=list, blank=True)
     date_applied = models.DateField(default=date.today())
-    status = models.TextField(default="applied", max_length=50, blank=True)
+    status = models.TextField(default="Applied", max_length=50, blank=True)
     
