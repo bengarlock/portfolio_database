@@ -10,6 +10,7 @@ from job_apps.views import JobappView
 from task.views import TaskView
 from django.contrib import admin
 from django.conf.urls import url
+from django.urls import include
 
 router = routers.SimpleRouter()
 
@@ -26,6 +27,7 @@ router.register('templates', TemplateView)
 
 
 urlpatterns = [
+    url('', include("home.urls")),
     url('admin/', admin.site.urls),
 ]
 
