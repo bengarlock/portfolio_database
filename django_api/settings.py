@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'task',
     'home',
     'job_apps',
-    'templates'
+    'templates',
+    'okta_interview'
 ]
 
 MIDDLEWARE = [
