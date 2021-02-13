@@ -44,6 +44,7 @@ def sync_okta():
                 oktaid=oktaid,
             )
 
+
 class OktaInterviewSerializer(serializers.ModelSerializer):
     class Meta:
         sync_okta()
@@ -55,4 +56,3 @@ class OktaInterviewSerializer(serializers.ModelSerializer):
 class OktaInterviewView(viewsets.ModelViewSet):
     queryset = OktaInterview.objects.all()
     serializer_class = OktaInterviewSerializer
-
