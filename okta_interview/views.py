@@ -4,6 +4,7 @@ from .models import OktaInterview
 import requests
 from passwords import return_api_key
 
+
 def sync_okta():
     url = "https://dev-49794790.okta.com/api/v1/users"
     api_token = return_api_key()
@@ -45,12 +46,13 @@ def sync_okta():
 
 class OktaInterviewSerializer(serializers.ModelSerializer):
     class Meta:
+        sync_okta()
         model = OktaInterview
         fields = "__all__"
 
 
 # Create your views here.
 class OktaInterviewView(viewsets.ModelViewSet):
-    sync_okta()
     queryset = OktaInterview.objects.all()
     serializer_class = OktaInterviewSerializer
+
