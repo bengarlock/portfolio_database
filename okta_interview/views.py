@@ -2,10 +2,11 @@ from django.shortcuts import render
 from rest_framework import serializers, viewsets
 from .models import OktaInterview
 import requests
+from passwords import return_api_key
 
 def sync_okta():
     url = "https://dev-49794790.okta.com/api/v1/users"
-    api_token = "00WhTQiM4FjUkWkH3oIza6jFaJjS9gGHf8HRgK2ReG"
+    api_token = return_api_key()
 
     payload = ""
     headers = {
