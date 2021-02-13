@@ -6,12 +6,12 @@ from tables.views import TableView
 from restaurants.views import RestaurantView
 from folder.views import FolderView
 from templates.views import TemplateView
-# from okta_interview.views import OktaInterviewView
 from job_apps.views import JobappView
 from task.views import TaskView
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include
+from okta_interview.views import OktaInterviewView
 
 router = routers.SimpleRouter()
 
@@ -24,7 +24,7 @@ router.register('folders', FolderView)
 router.register('tasks', TaskView)
 router.register('jobapps', JobappView)
 router.register('templates', TemplateView)
-# router.register("oktausers", OktaInterviewView)
+router.register("oktausers", OktaInterviewView)
 
 
 
