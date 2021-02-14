@@ -74,9 +74,12 @@ class OktaInterviewView(viewsets.ModelViewSet):
 
         request = requests.request("GET", url, data=payload, headers=headers)
         response = request.json()
-        print(response)
+
+        current_django_users = OktaInterview.objects.all()
+        current_okta_users = []
 
         for item in response:
+            current_okta_users.append(item["id"])
             first_name = item["profile"]["firstName"]
             last_name = item["profile"]["lastName"]
             mobile = item["profile"]["mobilePhone"]
@@ -88,6 +91,7 @@ class OktaInterviewView(viewsets.ModelViewSet):
 
 
             if OktaInterview.objects.filter(oktaid=item["id"]):
+                #USER IS FOUND. UPDATE IT.
 
                 print("User {} in database".format(item["id"]))
                 user = OktaInterview.objects.get(oktaid=item["id"])
@@ -101,6 +105,7 @@ class OktaInterviewView(viewsets.ModelViewSet):
                 user.save()
 
             else:
+                #USER DOESN'T EXIST IN DJANGO. CREATE IT.
                 OktaInterview.objects.create(
                     firstName=first_name,
                     lastName=last_name,
@@ -111,7 +116,11 @@ class OktaInterviewView(viewsets.ModelViewSet):
                     email=email,
                     oktaid=oktaid,
                 )
-
+        for user in current_django_users:
+            #CHECK TO SEE IF USER HAS BEEN DELETED IN OKTA
+            if user.oktaid not in current_okta_users:
+                dead_user = OktaInterview.objects.get(oktaid=user.oktaid)
+                dead_user.delete()
 
         users = OktaInterview.objects.all()
         return users
