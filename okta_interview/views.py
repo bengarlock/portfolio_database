@@ -80,6 +80,9 @@ class OktaInterviewView(viewsets.ModelViewSet):
 
         for item in response:
             current_okta_users.append(item["id"])
+
+
+
             first_name = item["profile"]["firstName"]
             last_name = item["profile"]["lastName"]
             mobile = item["profile"]["mobilePhone"]
@@ -89,11 +92,19 @@ class OktaInterviewView(viewsets.ModelViewSet):
             email = item["profile"]["email"]
             oktaid = item["id"]
 
+            groups_url = f"https://dev-49794790.okta.com/api/v1/users/{oktaid}/groups"
+            groups = requests.request("GET", groups_url, data=payload, headers=headers)
+            group_response = groups.json()
+            group_array = []
+
+            for group in group_response:
+                group_array.append(group["id"])
+
 
             if OktaInterview.objects.filter(oktaid=item["id"]):
-                #USER IS FOUND. UPDATE IT.
+                #OKTA user found in DJANGO. UPDATE IT in DJANGO.
 
-                print("User {} in database".format(item["id"]))
+                # print("User {} in database".format(item["id"]))
                 user = OktaInterview.objects.get(oktaid=item["id"])
                 user.firstName = first_name
                 user.lastName = last_name
@@ -102,10 +113,11 @@ class OktaInterviewView(viewsets.ModelViewSet):
                 user.secondEmail = second_email
                 user.login = login
                 user.email = email
+                user.okta_groups = group_array
                 user.save()
 
             else:
-                #USER DOESN'T EXIST IN DJANGO. CREATE IT.
+                #OKTA USER DOESN'T EXIST IN DJANGO. CREATE IT.
                 OktaInterview.objects.create(
                     firstName=first_name,
                     lastName=last_name,
@@ -115,9 +127,13 @@ class OktaInterviewView(viewsets.ModelViewSet):
                     login=login,
                     email=email,
                     oktaid=oktaid,
+                    okta_groups=group_array
                 )
+
         for user in current_django_users:
-            #CHECK TO SEE IF USER HAS BEEN DELETED IN OKTA
+
+            #if user exists in django but not okta, create it in okta.
+
             if user.oktaid not in current_okta_users:
                 dead_user = OktaInterview.objects.get(oktaid=user.oktaid)
                 dead_user.delete()
