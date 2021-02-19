@@ -1,4 +1,6 @@
-from rest_framework import routers
+from rest_framework.routers import DefaultRouter
+
+
 from books.views import BookView
 from guests.views import GuestView
 from slots.views import SlotView
@@ -11,21 +13,20 @@ from task.views import TaskView
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include
-from patients.views import PatientsView
+from patients.views import PatientView
 
-router = routers.SimpleRouter()
+router = DefaultRouter()
 
-router.register(r'books', BookView)
-router.register(r'guests', GuestView)
-router.register(r'slots', SlotView)
-router.register(r'tables', TableView)
-router.register(r'restaurants', RestaurantView)
-router.register('folders', FolderView)
-router.register('tasks', TaskView)
-router.register('jobapps', JobappView)
-router.register('templates', TemplateView)
-router.register("patients", PatientsView)
-
+router.register(r'books', BookView, basename="book")
+router.register(r'guests', GuestView, basename="guest")
+router.register(r'slots', SlotView, basename="slot")
+router.register(r'tables', TableView, basename="table")
+router.register(r'restaurants', RestaurantView, basename="restaurant")
+router.register(r'folders', FolderView, basename="folder")
+router.register(r'tasks', TaskView, basename='task')
+router.register(r'jobapps', JobappView, basename='jobapp')
+router.register(r'templates', TemplateView, basename="template")
+router.register(r'patients', PatientView, basename="patient")
 
 
 urlpatterns = [
