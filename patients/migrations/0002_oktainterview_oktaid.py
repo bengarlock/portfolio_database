@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('okta_interview', '0001_initial'),
+        ('patients', '0001_initial'),
     ]
 
     operations = [

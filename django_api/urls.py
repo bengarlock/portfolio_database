@@ -11,7 +11,7 @@ from task.views import TaskView
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include
-from okta_interview.views import OktaInterviewView
+from patients.views import PatientsView
 
 router = routers.SimpleRouter()
 
@@ -24,7 +24,7 @@ router.register('folders', FolderView)
 router.register('tasks', TaskView)
 router.register('jobapps', JobappView)
 router.register('templates', TemplateView)
-router.register("oktausers", OktaInterviewView)
+router.register("patients", PatientsView)
 
 
 

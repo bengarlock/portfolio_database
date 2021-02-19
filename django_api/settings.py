@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'home',
     'job_apps',
     'templates',
-    'okta_interview',
+    'patients',
 ]
 
 MIDDLEWARE = [
