@@ -125,7 +125,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': return_db_password(),
         'HOST': '127.0.0.1',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
