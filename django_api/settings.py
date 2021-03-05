@@ -84,7 +84,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
+    'localhost:3000',
     'https://www.bengarlock.com:6320',
     'https://www.bengarlock.com:6321',
     'https://www.bengarlock.com:6322',
