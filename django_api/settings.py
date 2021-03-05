@@ -69,11 +69,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'https://www.bengarlock.com',
-    'https://developer.okta.com',
-]
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:3000',
+#     'https://www.bengarlock.com',
+#     'https://developer.okta.com',
+# ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
