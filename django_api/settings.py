@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'http://localhost:3000/',
+    'www.bengarlock.com',
     'https://www.bengarlock.com:6320',
     'https://www.bengarlock.com:6321',
     'https://www.bengarlock.com:6322',
