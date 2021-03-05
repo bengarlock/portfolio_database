@@ -29,13 +29,7 @@ SECRET_KEY = return_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'bengarlock.com',
-    'www.bengarlock.com',
-    'http://localhost:3000',
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,6 +80,8 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.bengarlock.com:6324',
     'https://www.bengarlock.com:6325',
     'https://www.bengarlock.com:6326',
+    'https://www.bengarlock.com:6327',
+    'https://www.bengarlock.com:6328',
     'https://developer.okta.com',
 ]
 
