@@ -30,11 +30,18 @@ SECRET_KEY = return_secret_key()
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'bengarlock.com',
-    'www.bengarlock.com',
-    'http://localhost:3000',
+    'http://localhost:3000/',
+    'https://www.bengarlock.com:6320',
+    'https://www.bengarlock.com:6321',
+    'https://www.bengarlock.com:6322',
+    'https://www.bengarlock.com:6323',
+    'https://www.bengarlock.com:6324',
+    'https://www.bengarlock.com:6325',
+    'https://www.bengarlock.com:6326',
+    'https://www.bengarlock.com:6327',
+    'https://www.bengarlock.com:6328',
+    'https://www.bengarlock.com:6329',
+    'https://developer.okta.com',
 ]
 
 
@@ -69,12 +76,10 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -86,6 +91,9 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.bengarlock.com:6324',
     'https://www.bengarlock.com:6325',
     'https://www.bengarlock.com:6326',
+    'https://www.bengarlock.com:6327',
+    'https://www.bengarlock.com:6328',
+    'https://www.bengarlock.com:6329',
     'https://developer.okta.com',
 ]
 
