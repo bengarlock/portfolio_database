@@ -30,7 +30,7 @@ SECRET_KEY = return_secret_key()
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://localhost:3000',
+    'localhost:3000',
     'www.bengarlock.com',
     'https://www.bengarlock.com:6320',
     'https://www.bengarlock.com:6321',
