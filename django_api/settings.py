@@ -29,13 +29,7 @@ SECRET_KEY = return_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'bengarlock.com',
-    'www.bengarlock.com',
-    'http://localhost:3000',
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition

@@ -1,0 +1,8 @@
+DATABASE_URL=postgresql://postgres:chocolate100X@127.0.0.1/myapp
+
+
+
+RAILS_MASTER_KEY=03b5ee4d234fa53af7f1415944cb4d64
+
+SECRET_KEY_BASE=1b359bc96173b592c146b04e2c30b0fe551babe101a5f8f2b63aa640ea75670$
+
