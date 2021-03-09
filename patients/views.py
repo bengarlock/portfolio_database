@@ -34,6 +34,7 @@ class PatientView(viewsets.ViewSet):
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
         ssn = Patient.objects.get(email=user_email).ssn
+
         response = {
             "commands": [
                 {

@@ -6,4 +6,9 @@ class Patient(models.Model):
     first_name = models.CharField(default='', max_length=100, null=True)
     last_name = models.CharField(default='', max_length=100, null=True)
     ssn = models.CharField(default='', max_length=50, null=True)
+    member_id = models.CharField(default='', max_length=50, null=True)
+    medical_records = ArrayField(models.CharField(max_length=15), default=list, blank=True)
+    plan_benefit_info = ArrayField(models.CharField(max_length=15), default=list, blank=True)
+    prescriptions = ArrayField(models.CharField(max_length=15), default=list, blank=True)
     email = models.CharField(default='', max_length=50, null=True)
+
