@@ -34,6 +34,8 @@ class PatientView(viewsets.ViewSet):
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
         ssn = Patient.objects.get(email=user_email).ssn
+        member_id = Patient.objects.get(email=user_email).member_id
+
         response = {
             "commands": [
                 {
@@ -41,21 +43,16 @@ class PatientView(viewsets.ViewSet):
                     "value": [
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/ssn",
                             "value": ssn,
-                        }
-                    ]
-                },
-                {
-                    "type": "com.okta.access.patch",
-                    "value": [
+                        },
                         {
                             "op": "add",
-                            "path": "/claims/external_guid",
-                            "value": "F0384685-F87D-474B-848D-2058AC5655A7"
-                        }
+                            "path": "/claims/memberId",
+                            "value": member_id,
+                        },
                     ]
-                }
+                },
             ]
         }
 
