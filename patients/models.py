@@ -16,4 +16,5 @@ class Patient(models.Model):
 
 class Prescriptions(models.Model):
     name = models.CharField(default='', max_length=50, null=True)
+    doctor = models.CharField(default='', max_length=50, null=True)
     patient_id = models.ForeignKey(Patient, related_name="patient", on_delete=models.SET_NULL, null=True)
