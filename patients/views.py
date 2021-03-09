@@ -3,6 +3,7 @@ from .models import Patient
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 import json
+from django.http import HttpResponse
 
 
 class PatientSerializer(serializers.ModelSerializer):
@@ -18,11 +19,8 @@ class PatientView(viewsets.ViewSet):
 
     def list(self, request):
         print(request.headers)
-
-
         queryset = Patient.objects.all()
         serializer = PatientSerializer(queryset, many=True)
-
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
@@ -32,19 +30,33 @@ class PatientView(viewsets.ViewSet):
         return Response(serializer.data)
 
     def create(self, request):
-
-        print("!!!!!!!!!!!!!!!!!!!!!!!")
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
-        print(user_email)
-        patient = Patient.objects.filter(email=user_email)
-        return Response(patient.values("ssn"))
+        ssn = Patient.objects.get(email=user_email).ssn
+        response = {
+            "commands": [
+                {
+                    "type": "com.okta.identity.patch",
+                    "value": [
+                        {
+                            "op": "add",
+                            "path": "/claims/extPatientId",
+                            "value": ssn,
+                        }
+                    ]
+                },
+                {
+                    "type": "com.okta.access.patch",
+                    "value": [
+                        {
+                            "op": "add",
+                            "path": "/claims/external_guid",
+                            "value": "F0384685-F87D-474B-848D-2058AC5655A7"
+                        }
+                    ]
+                }
+            ]
+        }
 
-
-
-
-
-
-
-
+        return Response(response)
