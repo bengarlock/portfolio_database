@@ -57,6 +57,7 @@ class PatientView(viewsets.ViewSet):
 
         ssn = Patient.objects.get(email=user_email).ssn
         member_id = Patient.objects.get(email=user_email).member_id
+        patient_id = Patient.objects.get(email=user_email).id
 
         response = {
             "commands": [
@@ -72,6 +73,11 @@ class PatientView(viewsets.ViewSet):
                             "op": "add",
                             "path": "/claims/memberId",
                             "value": member_id,
+                        },
+                        {
+                            "op": "add",
+                            "path": "/claims/patientId",
+                            "value": patient_id,
                         },
 
                     ]
