@@ -83,6 +83,7 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.bengarlock.com:6328',
     'https://www.bengarlock.com:6329',
     'https://developer.okta.com',
+    'http://localhost:8200/'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
