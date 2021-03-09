@@ -33,12 +33,12 @@ class PatientView(viewsets.ViewSet):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
-        patient = Patient.objects.get(email=user_email)
-        ssn = patient.ssn
-        member_id = patient.member_id
-        medical_records = patient.medical_records
-        plan_benefit_info = patient.plan_benefit_info
-        prescriptions = patient.prescriptions
+
+        ssn = Patient.objects.get(email=user_email).ssn
+        member_id = Patient.objects.get(email=user_email).member_id
+        medical_records = Patient.objects.get(email=user_email).medical_records
+        plan_benefit_info = Patient.objects.get(email=user_email).plan_benefit_info
+        prescriptions = Patient.objects.get(email=user_email).prescriptions
 
         response = {
             "commands": [
@@ -47,27 +47,27 @@ class PatientView(viewsets.ViewSet):
                     "value": [
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/ssn",
                             "value": ssn,
                         },
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/memberId",
                             "value": member_id,
                         },
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/medicalRecords",
                             "value": medical_records,
                         },
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/planBenefitInfo",
                             "value": plan_benefit_info,
                         },
                         {
                             "op": "add",
-                            "path": "/claims/extPatientId",
+                            "path": "/claims/prescriptions",
                             "value": prescriptions,
                         }
                     ]
