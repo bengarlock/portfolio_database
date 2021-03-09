@@ -8,7 +8,7 @@ import json
 class PrescriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prescriptions
-        fields = "__all__"
+        fields = ["__all__"]
 
 
 class PrescriptionView(viewsets.ModelViewSet):
@@ -19,7 +19,7 @@ class PrescriptionView(viewsets.ModelViewSet):
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = "__all__"
+        fields = ["id", "first_name", "last_name", "ssn", "member_id", "medical_records", "plan_benefit_info", "email", "prescriptions"]
 
 
 # Create your views here.
