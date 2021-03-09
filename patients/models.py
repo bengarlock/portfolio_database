@@ -12,3 +12,6 @@ class Patient(models.Model):
     prescriptions = ArrayField(models.CharField(max_length=15), default=list, blank=True)
     email = models.CharField(default='', max_length=50, null=True)
 
+
+class Prescriptions(models.Model):
+    name = models.CharField(default='', max_length=50, null=True)
