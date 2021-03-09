@@ -1,9 +1,19 @@
-from rest_framework import serializers, viewsets, status
-from .models import Patient
+from rest_framework import serializers, viewsets
+from .models import Patient, Prescriptions
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 import json
-from django.http import HttpResponse
+
+
+class PrescriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prescriptions
+        fields = "__all__"
+
+
+class PrescriptionView(viewsets.ModelViewSet):
+    queryset = Prescriptions.objects.all()
+    serializer_class = PrescriptionSerializer
 
 
 class PatientSerializer(serializers.ModelSerializer):

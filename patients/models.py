@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
+
 # Create your models here.
 class Patient(models.Model):
     first_name = models.CharField(default='', max_length=100, null=True)
@@ -15,3 +16,4 @@ class Patient(models.Model):
 
 class Prescriptions(models.Model):
     name = models.CharField(default='', max_length=50, null=True)
+    patient_id = models.ForeignKey(Patient, related_name="patient", on_delete=models.SET_NULL, null=True)
