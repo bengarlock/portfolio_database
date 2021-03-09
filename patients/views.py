@@ -60,8 +60,9 @@ class PatientView(viewsets.ViewSet):
 
         ssn = patient.ssn
         member_id = patient.member_id
-
-
+        prescriptions = patient.prescriptions.all()
+        medical_records = patient.medical_records.all()
+        plan_benefit_info = patient.plan_benefit_info.all()
 
 
         # ssn = Patient.objects.get(email=user_email).ssn
