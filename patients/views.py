@@ -71,26 +71,7 @@ class PatientView(viewsets.ViewSet):
                             "path": "/claims/ssn",
                             "value": ssn,
                         },
-                        {
-                            "op": "add",
-                            "path": "/claims/memberId",
-                            "value": member_id,
-                        },
-                        {
-                            "op": "add",
-                            "path": "/claims/medicalRecords",
-                            "value": medical_records,
-                        },
-                        {
-                            "op": "add",
-                            "path": "/claims/planBenefitInfo",
-                            "value": plan_benefit_info,
-                        },
-                        {
-                            "op": "add",
-                            "path": "/claims/prescriptions",
-                            "value": prescriptions,
-                        }
+
                     ]
                 }
             ]
