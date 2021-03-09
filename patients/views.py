@@ -1,15 +1,36 @@
-from rest_framework import serializers, viewsets, status
-from .models import Patient
+from rest_framework import serializers, viewsets
+from .models import Patient, Prescriptions
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 import json
-from django.http import HttpResponse
+
+
+class PrescriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prescriptions
+        fields = "__all__"
+
+
+class PrescriptionView(viewsets.ModelViewSet):
+    queryset = Prescriptions.objects.all()
+    serializer_class = PrescriptionSerializer
 
 
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = "__all__"
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "ssn",
+            "member_id",
+            "medical_records",
+            "plan_benefit_info",
+            "email",
+            "prescriptions"
+        ]
+        depth = 1
 
 
 # Create your views here.
@@ -33,6 +54,7 @@ class PatientView(viewsets.ViewSet):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
+
         ssn = Patient.objects.get(email=user_email).ssn
         member_id = Patient.objects.get(email=user_email).member_id
 
@@ -51,6 +73,7 @@ class PatientView(viewsets.ViewSet):
                             "path": "/claims/memberId",
                             "value": member_id,
                         },
+
                     ]
                 },
             ]

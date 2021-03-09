@@ -13,7 +13,7 @@ from task.views import TaskView
 from django.contrib import admin
 from django.conf.urls import url
 from django.urls import include
-from patients.views import PatientView
+from patients.views import PatientView, PrescriptionView
 
 router = DefaultRouter()
 
@@ -27,6 +27,7 @@ router.register(r'tasks', TaskView, basename='task')
 router.register(r'jobapps', JobappView, basename='jobapp')
 router.register(r'templates', TemplateView, basename="template")
 router.register(r'patients', PatientView, basename="patient")
+router.register(r'prescriptions', PrescriptionView, basename="prescriptions")
 
 
 urlpatterns = [
