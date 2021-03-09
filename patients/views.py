@@ -19,7 +19,17 @@ class PrescriptionView(viewsets.ModelViewSet):
 class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
-        fields = ["id", "first_name", "last_name", "ssn", "member_id", "medical_records", "plan_benefit_info", "email", "prescriptions"]
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "ssn",
+            "member_id",
+            "medical_records",
+            "plan_benefit_info",
+            "email",
+            "prescriptions"
+        ]
         depth = 1
 
 
@@ -45,11 +55,20 @@ class PatientView(viewsets.ViewSet):
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
 
-        ssn = Patient.objects.get(email=user_email).ssn
-        member_id = Patient.objects.get(email=user_email).member_id
-        medical_records = Patient.objects.get(email=user_email).medical_records
-        plan_benefit_info = Patient.objects.get(email=user_email).plan_benefit_info
-        prescriptions = Patient.objects.get(email=user_email).prescriptions
+        queryset = Patient.objects.all()
+        patient = get_object_or_404(queryset, email=user_email)
+
+        ssn = patient.ssn
+        member_id = patient.member_id
+
+
+
+
+        # ssn = Patient.objects.get(email=user_email).ssn
+        # member_id = Patient.objects.get(email=user_email).member_id
+        # medical_records = Patient.objects.get(email=user_email).medical_records
+        # plan_benefit_info = Patient.objects.get(email=user_email).plan_benefit_info
+        # prescriptions = Patient.objects.get(email=user_email).prescriptions
 
         response = {
             "commands": [
