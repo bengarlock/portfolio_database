@@ -8,7 +8,7 @@ import json
 class PrescriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prescriptions
-        fields = ["__all__"]
+        fields = "__all__"
 
 
 class PrescriptionView(viewsets.ModelViewSet):
