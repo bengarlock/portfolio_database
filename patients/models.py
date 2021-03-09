@@ -10,11 +10,10 @@ class Patient(models.Model):
     member_id = models.CharField(default='', max_length=50, null=True)
     medical_records = ArrayField(models.CharField(max_length=15), default=list, blank=True)
     plan_benefit_info = ArrayField(models.CharField(max_length=15), default=list, blank=True)
-    prescriptions = ArrayField(models.CharField(max_length=15), default=list, blank=True)
     email = models.CharField(default='', max_length=50, null=True)
 
 
 class Prescriptions(models.Model):
     name = models.CharField(default='', max_length=50, null=True)
     doctor = models.CharField(default='', max_length=50, null=True)
-    patient_id = models.ForeignKey(Patient, related_name="patient", on_delete=models.SET_NULL, null=True)
+    patient_id = models.ForeignKey(Patient, related_name="prescriptions", on_delete=models.SET_NULL, null=True)
