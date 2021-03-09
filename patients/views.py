@@ -55,21 +55,11 @@ class PatientView(viewsets.ViewSet):
         body = json.loads(body_unicode)
         user_email = body["data"]["identity"]["claims"]["email"]
 
-        queryset = Patient.objects.all()
-        patient = get_object_or_404(queryset, email=user_email)
-
-        ssn = patient.ssn
-        member_id = patient.member_id
-        prescriptions = patient.prescriptions.all()
-        medical_records = patient.medical_records.all()
-        plan_benefit_info = patient.plan_benefit_info.all()
-
-
-        # ssn = Patient.objects.get(email=user_email).ssn
-        # member_id = Patient.objects.get(email=user_email).member_id
-        # medical_records = Patient.objects.get(email=user_email).medical_records
-        # plan_benefit_info = Patient.objects.get(email=user_email).plan_benefit_info
-        # prescriptions = Patient.objects.get(email=user_email).prescriptions
+        ssn = Patient.objects.get(email=user_email).ssn
+        member_id = Patient.objects.get(email=user_email).member_id
+        medical_records = Patient.objects.get(email=user_email).medical_records
+        plan_benefit_info = Patient.objects.get(email=user_email).plan_benefit_info
+        prescriptions = Patient.objects.get(email=user_email).prescriptions
 
         response = {
             "commands": [
