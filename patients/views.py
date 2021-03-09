@@ -20,6 +20,7 @@ class PatientSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patient
         fields = ["id", "first_name", "last_name", "ssn", "member_id", "medical_records", "plan_benefit_info", "email", "prescriptions"]
+        depth = 2
 
 
 # Create your views here.
