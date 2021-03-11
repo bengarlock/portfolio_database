@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'job_apps',
     'templates',
     'patients',
-    'knox',
 ]
 
 MIDDLEWARE = [
@@ -73,8 +72,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-         'rest_framework.authentication.BasicAuthentication',
-         'knox.auth.TokenAuthentication',),
+         'rest_framework.authentication.BasicAuthentication',)
 }
 
 CORS_ALLOWED_ORIGINS = [
