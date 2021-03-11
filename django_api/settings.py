@@ -71,6 +71,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+         'rest_framework.authentication.BasicAuthentication',
+         'knox.auth.TokenAuthentication',),
+}
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'https://www.bengarlock.com:6320',
