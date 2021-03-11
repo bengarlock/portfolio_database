@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'job_apps',
     'templates',
     'patients',
+    'knox',
 ]
 
 MIDDLEWARE = [
